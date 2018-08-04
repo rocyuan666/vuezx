@@ -4,8 +4,8 @@
 - #### 脚手架（命令行）搭建：
     `npm install --global vue-cli`
 - #### 创建项目：
-    `vue init webpack vuedemo01`  
-    `(vue init webpack-simple vuedemo02)`  
+    `vue init webpack-simple vuedemo02`  
+    `(vue init webpack vuedemo01)`  
     `cd  vue-demo01`  
     `npm install`  
     `npm run dev`  
