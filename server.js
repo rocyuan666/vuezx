@@ -35,12 +35,6 @@ var server = http.createServer(function (req, res) {
             res.write(data);
             res.end();}
     });
-}).listen(8080);// 此处的8080是监听的端口号,可以根据自己的需要配置,注意不要和本地的一些应用程序使用的端口号冲突
+}).listen(8080);// 此处的8080是监听的端口
 
  console.log('服务器开启成功');
- //把此代码保存为js_server.js
- //打开终端 执行命令:   node  js_server.js
- //打开浏览器输入http://localhost:8080/[你要访问的html文件]
- //例如:http://localhost:8080/index.html
- //localhost 可以使用127.0.0.1代替
- //参考:http://blog.csdn.net/u014420383/article/details/47945819
