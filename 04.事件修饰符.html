@@ -1,0 +1,65 @@
+<!-- 
+	事件修饰符可以串联
+	.stop：阻止冒泡
+	.prevent：阻止默认事件
+	.capture：添加事件侦听器是时使用事件捕获模式（从外层到里层触发）
+	.self：只当事件在该元素本身触发时触发回调 *冒泡，捕获不执行*
+	.once：事件只触发一次
+
+	.stop与.self区别：
+		.stop会阻止内层所有冒泡
+		.self只会阻止自身冒泡行为，不能阻止其他冒泡行为
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件修饰符</title>
+	<script src="vuejs/vue.min.js"></script>
+	<style>
+		.div1{
+			width: 200px;
+			height: 200px;
+			background-color: #f99;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- <div class="div1" @click="div1">
+			<button @click.stop="btn1">点点点</button>
+		</div> -->
+
+		<!-- <a href="//www.baidu.com" @click.prevent="up">百度一下</a> -->
+
+		<!-- <div class="div1" @click.capture="div1">
+			<button @click="btn1">点点点</button>
+		</div> -->
+
+		<div class="div1" @click.self="div1">
+			<button @click="btn1">点点点</button>
+		</div>
+
+		<!-- <a href="//www.baidu.com" @click.prevent.once="up">百度一下</a> -->
+	</div>
+	<script>
+		var vm = new Vue({
+			el:"#app",
+			data:{
+
+			},
+			methods:{
+				div1:function(){
+					alert("div1")
+				},
+				btn1:function(){
+					alert("btn1")
+				},
+				up:function(){
+					alert("百度一下")
+				}
+			}
+		})
+	</script>
+</body>
+</html>

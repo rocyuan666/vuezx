@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-cloak v-text v-html</title>
+	<style>
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- v-cloak:解决vuejs未加载完成 插值表达式闪烁问题，但不会覆盖标签内的内容 -->
+		<h1 v-cloak> 0.0{{text}}0.0 </h1>
+		<!-- v-text：解决闪烁问题，会覆盖标签内的内容 -->
+		<h2 v-text="text">0.0</h2>
+		<!-- v-html:会覆盖标签内的内容 -->
+		<h3 v-html="text2"></h3>
+		<!-- v-bind：可以绑定属性，简写为“:”+绑定的属性(属性值可写js表达式) -->
+		<!-- v-on：可以绑定事件，简写为“@”+事件名 -->
+		<button v-bind:title="title" v-on:click="hello">绑定属性v-bind</button>
+	</div>
+	<script src="vuejs/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				text:"v-cloak v-text v-html",
+				text2:"<p>我是v-html添加的p标签</p>",
+				title:"title绑定属性v-bind"
+			},
+			methods:{
+				hello: function(){
+					alert("hello");
+				}
+			}
+		})
+	</script>
+</body>
+</html>

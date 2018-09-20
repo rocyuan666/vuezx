@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>重温跑马灯</title>
+	<script src="vuejs/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<form action="">
+			<input type="button" value="跑起来" @click="run">
+			<input type="button" value="立定" @click="stop">
+			<p>{{text}}</p>
+		</form>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				text: "GO跑起来121~",
+				time: null,
+				s:true
+			},
+			methods:{
+				run:function(){
+					var _this = this;
+					if(this.s){
+						this.time = setInterval(function(){
+							var s = _this.text.substring(0,1);
+							var e = _this.text.substring(1);
+							_this.text = e+s;
+						},500)
+						this.s = false;
+					}
+				},
+				stop:function(){
+					clearInterval(this.time);
+					this.s = true;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
