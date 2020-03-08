@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	
+<script>
+	// 1.一旦赋值无法更改
+	// const name1 = 'roc';
+	// name1 = 'yuan'; //错误
+	
+	// 2.使用const声明，必须进行赋值
+	//错误
+	// const name2;
+	// name2 = 'roc';
+	
+	// 3.常量定义的对象不能更改对象指向（对象是以内存地址保存），但是可以更改对象内部的属性
+	const obj = {
+		name3: 'roc',
+		age: 18
+	}
+	// obj = {};  //错误
+	console.log(obj);
+	obj.name3 = 'yuan';
+	obj.age = 17;
+	console.log(obj)
+</script>	
+
+</body>
+</html>

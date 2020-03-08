@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<button type="button">按钮1</button>
+	<button type="button">按钮2</button>
+	<button type="button">按钮3</button>
+	<button type="button">按钮4</button>
+	<button type="button">按钮5</button>
+<script>
+	
+	// 1.有问题
+	// var btn = document.getElementsByTagName('button');
+	// for(var i = 0 ; i < btn.length ; i ++){
+	// 	btn[i].onclick = function(){
+	// 		console.log(i);
+	// 	}
+	// }
+	
+	//2.es5-闭包解决 (执行了多个自执行函数、闭包 function里有自己的作用域)
+	// var btn = document.getElementsByTagName('button');
+	// for(var i = 0 ; i < btn.length ; i ++){
+	// 	(function(i){
+	// 		btn[i].onclick = function(){
+	// 			console.log(i);
+	// 		}
+	// 	})(i)
+	// }
+	
+	//3.es6-let解决
+	const btn = document.getElementsByTagName('button');
+	for(let i = 0 ; i < btn.length ; i ++){
+		btn[i].onclick = function(){
+			console.log(i);
+		}
+	}
+	
+</script>	
+
+</body>
+</html>

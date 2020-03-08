@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>组件通讯（父传子）</title>
+</head>
+<body>
+	<div id="app">
+		<mycpn :cmessage='message'></mycpn>
+	</div>
+	<template id="mycpn">
+		<div>
+			<h2>{{cmessage}}</h2>
+		</div>
+	</template>
+	<script src="../js/vue.js"></script>
+	<script>
+		const mycpn = {
+			template: '#mycpn',
+			props: {
+				cmessage: {
+					type: String,
+					default: 'aaa',
+					required: false
+				}
+			}
+		}
+		const app = new Vue({
+			el: '#app',
+			data: {
+				message: '你好啊'
+			},
+			components: {
+				mycpn: mycpn
+			}
+		})
+	</script>
+</body>
+</html>

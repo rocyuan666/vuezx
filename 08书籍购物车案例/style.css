@@ -1,0 +1,16 @@
+/* *{
+	padding:0;
+	margin:0;
+} */
+table{
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+table th{
+	background-color: #eee;
+}
+th,td{
+	padding:5px;
+	border: 1px solid #ccc;
+}

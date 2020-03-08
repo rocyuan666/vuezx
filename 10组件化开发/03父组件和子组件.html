@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<div id="app">
+			<cpn2></cpn2>
+			<!-- 不能使用cpn1 Vue实例(app)内没有注册 -->
+			<!-- <cpn1></cpn1> -->
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			// 创建第一个组件 
+			const cpnC1 = Vue.extend({
+				template: `
+					<div>
+						<h2>我是标题1</h2>
+						<p>我是内容1</p>
+					</div>
+				`
+			})
+			// 创建第二个组件 （父组件）
+			const cpnC2 = Vue.extend({
+				template: `
+					<div>
+						<h2>我是标题2</h2>
+						<p>我是内容2</p>
+						<cpn1></cpn1>
+					</div>
+				`,
+				components:{
+					cpn1: cpnC1
+				}
+			})
+			
+			// root组件
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '你好啊'
+				},
+				components: {
+					cpn2: cpnC2
+				}
+			})
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,5 @@
+Mustache语法：{{}}
+v-once
+v-html
+v-text
+v-pre	把内容原封不动的解析出来

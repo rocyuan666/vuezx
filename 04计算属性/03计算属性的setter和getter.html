@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<div id="app">
+			<h2>{{fullName}}</h2>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			const vm = new Vue({
+				el: "#app",
+				data: {
+					fristName: 'aaa',
+					lastName: 'bbb'
+				},
+				computed: {
+					// fullName: function(){
+					// 	return this.fristName + ' ' + this.lastName;
+					// }
+					fullName: {
+						// 一般没有set方法，只读属性
+						// 如果有，对fullName赋值会触发set方法，对fullName赋的值是newvalue
+						set: function(newvalue){
+							console.log(newvalue)
+						},
+						get: function(){
+							return this.fristName + ' ' + this.lastName;
+						}
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

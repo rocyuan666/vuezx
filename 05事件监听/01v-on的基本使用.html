@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<div id="app">
+			<h2>{{num}}</h2>
+			<!-- 不需要传参的时候可以省略 方法的括号() -->
+			<button v-on:click="add" type="button">+</button>
+			<button @click="sub" type="button">-</button>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					num: 0
+				},
+				methods: {
+					add(){
+						this.num++;
+					},
+					sub(){
+						this.num--;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

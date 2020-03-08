@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>组件通讯（子传父）</title>
+</head>
+<body>
+	<div id="app">
+		<mycpn @itemclick='h2Click'></mycpn>
+		<h2>子组件传过来的数据：{{message}}</h2>
+	</div>
+	<template id="mycpn">
+		<div>
+			<h2 @click="cpnClick(cmessage)">点击我，把我传给父组件：{{cmessage}}</h2>
+		</div>
+	</template>
+	<script src="../js/vue.js"></script>
+	<script>
+		const mycpn = {
+			template: '#mycpn',
+			data(){
+				return {
+					cmessage: '你好啊'
+				}
+			},
+			methods:{
+				cpnClick(cmessage){
+					this.$emit('itemclick',cmessage)
+				}
+			}
+		}
+		const app = new Vue({
+			el: '#app',
+			data: {
+				message: ''
+			},
+			components: {
+				mycpn: mycpn,
+			},
+			methods: {
+				h2Click(message){
+					console.log(message)
+					this.message = message;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

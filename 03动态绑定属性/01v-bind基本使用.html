@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		*{margin:0;padding:0;}
+	</style>
+	<body>
+		<div id="app">
+			<!-- 错误的写法 -->
+			<!-- <img src="{{url}}" alt=""> -->
+			
+			<img v-bind:src="imgUrl" alt="">
+			<a v-bind:href="aUrl">{{aName}}</a>
+			<!-- 简写 -->
+			<img :src="imgUrl" alt="">
+			<a :href="aUrl">{{aName}}</a>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					message: "你好啊",
+					imgUrl: "https://img14.360buyimg.com/babel/s190x240_jfs/t1/73611/34/16563/10157/5ddf5f8bE1609147d/4ec959f1cfa2de36.png!cc_190x240.webp",
+					aName: "百度一下",
+					aUrl: "http://www.baidu.com"
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<div id="app">
+			<!-- 
+			小问题（vue自身 虚拟Dom原因）：
+			切换到 用户邮箱  用户在账号的input上输入的值依旧保存
+			解决：加 key属性
+			 
+			 -->
+			<span v-if="isUser">
+				<label for="username">用户账号</label>
+				<input type="text" id="username" placeholder="用户账号" key="username" />
+			</span>
+			<span v-else>
+				<label for="useremail">用户邮箱</label>
+				<input type="text" id="useremail" placeholder="用户邮箱" key="useremail" />
+			</span>
+			<button @click="isUser = !isUser">切换类型</button>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					isUser: true
+				}
+			});
+		</script>
+	</body>
+</html>

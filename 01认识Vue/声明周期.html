@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>声明周期</title>
+		<style>
+			*{margin:0;padding:0;}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			{{name}}
+		</div>
+		<script src="js/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					name: "roc"
+				},
+				methods: {
+					
+				},
+				beforeCreate: function(){
+					alert("beforeCreate");
+				},
+				created: function(){
+					alert("created");
+				},
+				mounted: function(){
+					alert("mounted");
+				}
+			});
+		</script>
+	</body>
+</html>

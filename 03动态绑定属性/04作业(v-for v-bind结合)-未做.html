@@ -1,0 +1,35 @@
+<!-- 见07文件夹 -->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style>
+		.red{color:#f00;}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li :class="{red: index == liIndex}" v-for="(m, index) in movie" @click="liClick(index)">{{m}}</li>
+		</ul>
+	</div>
+	<script src="../js/vue.js"></script>
+	<script>
+		const vm = new Vue({
+			el: '#app',
+			data: {
+				movie: ['11111111', '22222222', '33333333', '44444444'],
+				liIndex: 0
+			},
+			methods: {
+				liClick: function(index){
+					this.liIndex = index;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

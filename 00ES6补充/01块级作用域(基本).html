@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<button type="button">按钮1</button>
+	<button type="button">按钮2</button>
+	<button type="button">按钮3</button>
+	<button type="button">按钮4</button>
+	<button type="button">按钮5</button>
+<script>
+	//变量作用域：变量在什么范围内是有用的
+	// if(1){
+	// 	var name = "roc";
+	// }
+	// console.log(name);
+	
+	
+	// ES5之前  只有function有块级作用域、for if 没有块级作用域
+	// ES6中  let有块级作用域
+	
+	
+	// var btn = document.getElementsByTagName('button');
+	// for(var i = 0 ; i < btn.length ; i ++){
+	// 	btn[i].onclick = function(){
+	// 		console.log(i);
+	// 	}
+	// }
+	
+	//闭包解决
+	// var btn = document.getElementsByTagName('button');
+	// for(var i = 0 ; i < btn.length ; i ++){
+	// 	(function(i){
+	// 		btn[i].onclick = function(){
+	// 			console.log(i);
+	// 		}
+	// 	})(i)
+	// }
+	
+	//ES6解决
+	const btn = document.getElementsByTagName('button');
+	for(let i = 0 ; i < btn.length ; i ++){
+		btn[i].onclick = function(){
+			console.log(i);
+		}
+	}
+	
+</script>	
+
+</body>
+</html>

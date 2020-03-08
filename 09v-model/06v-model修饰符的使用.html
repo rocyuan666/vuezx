@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<div id="app">
+			<!-- 1. .lazy: 失去焦点的时候更新 message -->
+			<input type="text" v-model.lazy="message">
+			<p>{{message}}</p>
+			
+			<!-- 2. .number: v-model绑定的都是string类型, .number 可转换为number类型 -->
+			<input type="number" v-model.number="age">
+			<p>{{age}}-{{typeof age}}</p>
+			
+			<!-- 3. .trim 去掉两端空格 -->
+			<input type="text" v-model.trim="name">
+			<p>{{name}}</p>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '你好啊',
+					age: 0,
+					name: ''
+				}
+			})
+		</script>
+		
+	</body>
+</html>

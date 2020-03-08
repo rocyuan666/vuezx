@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<div id="app">
+			<!-- <input type="text" v-model="message"> -->
+			<!-- <input type="text" :value="message" @input="clickChange"> -->
+			<input type="text" :value="message" @input="message = $event.target.value">
+			<p>{{message}}</p>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '你好啊'
+				},
+				methods: {
+					// clickChange(event){
+					// 	this.message = event.target.value
+					// }
+				}
+			})
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		
+	</div>
+	
+	<template id="cpn">
+		<div>
+			<h2>我是子组件</h2>
+			
+		</div>
+	</template>
+	
+	<script src="../js/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el: '#app',
+			components:{
+				template: '#cpn',
+				
+			}
+		})
+	</script>
+</body>
+</html>

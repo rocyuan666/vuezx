@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>vue初识</title>
+</head>
+<body>
+	<div id="app">
+		<h1>{{name}}</h1>
+		<ul>
+			<li v-for="item in movie">{{item}}</li>
+		</ul>
+	</div>
+	<script src="js/vue.js"></script>
+	<script>
+		var app1 = new Vue({
+			el: "#app",
+			data: {
+				name: "电影排行",
+				movie: ["攀登者","流浪地球","少年的你","罗小黑战记"]
+			}
+		})
+	</script>
+</body>
+</html>

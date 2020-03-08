@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		*{margin:0;padding:0;}
+	</style>
+	<body>
+		<div id="app">
+			<!-- 数组语法不常用 不会覆盖原来的class -->
+			<h2 class="title" :class="[active, line]">{{message}}</h2>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					message: "你好啊",
+					active: 'aaa',
+					line: 'bbb'
+				}
+			});
+		</script>
+	</body>
+</html>

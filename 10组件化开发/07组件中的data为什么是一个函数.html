@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+			<cpn></cpn>
+			<cpn></cpn>
+		</div>
+		
+		<template id="cpn">
+			<div>
+				<h2>当前计数: {{num}}</h2>
+				<button @click="sub">-</button>
+				<button @click="add">+</button>
+			</div>
+		</template>
+		
+		<script src="../js/vue.js"></script>
+		<script>
+			
+			Vue.component('cpn', {
+				template: '#cpn',
+				/* 
+				 多次的组件不会共用一个data
+				 因为data是一个方法，多次使用组件会多次调用data方法，每一次调用组件所用的数据是每一次调用data方法 返回的对象数据
+				 */
+				data(){
+					return {
+						num: 0
+					}
+				},
+				methods:{
+					add(){
+						this.num++;
+					},
+					sub(){
+						this.num--;
+					}
+				}
+			})
+			
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '你好啊'
+				}
+			})
+		</script>
+	</body>
+</html>

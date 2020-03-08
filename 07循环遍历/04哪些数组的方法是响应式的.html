@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<div id="app">
+			<!-- 
+			push
+			 
+			 
+			 -->
+			<ul>
+				<li v-for="item in letters">{{item}}</li>
+			</ul>
+			<button type="button" @click="btnClick">按钮</button>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					letters: ['a', 'b', 'c', 'd', 'e']
+				},
+				methods: {
+					btnClick(){
+						// 响应式的方法：
+						// 1.push方法(向最后添加元素，可添加多个)
+						// this.letters.push('aaa');
+						
+						// 2.pop方法(删除最后一个)
+						// this.letters.pop();
+						
+						// 3.unshift方法(向最前面添加，可添加多个)
+						// this.letters.unshift('aaa')
+						
+						// 4.shift方法(删除第一个)
+						// this.letters.shift();
+						
+						// splice作用：删除元素/插入元素/替换元素  (常用  推荐使用)
+						// 5.splice方法(a,b,...c)  a:开始的位置(包含开始位置)  b:要删除多少个(没传 删除后面所有)  ...c添加的元素
+						// this.letters.splice(1, 0, 'aaa','bbb')
+						
+						// 6.sort方法(排序)
+						// this.letters.sort();
+						
+						// 7.reverst方法(反转)
+						// this.letters.reverse();
+						
+						// set('要修改的对象','索引值','修改后的值')
+						Vue.set(this.letters, 0, 'aaa')
+						
+						
+						// ----------------------------------------------
+						// 不会响应式：
+						// 2.通过索引修改数组中的元素
+						// this.letters[0] = 'aaa';
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
