@@ -1,9 +1,4 @@
-1.创建项目
-2.划分目录结构
-3.引入初始化css
-4.目录起别名vue.config.js
-5..gitignore文件（项目规范）创建
-
+﻿
 没记住的单词：
 redirect 重定向
 children  孩子

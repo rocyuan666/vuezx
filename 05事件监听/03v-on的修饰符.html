@@ -24,7 +24,8 @@
 			<input type="text" @keyup.enter="keyUp">
 			
 			<!-- 4. .once 只会触发一次 -->
-			<button @click.once="btn2Click">按钮2</button>
+      <button @click.once="btn2Click">按钮2</button>
+      <!-- 5.监听组件的原生事件时要加 .native -->
 		</div>
 		<script src="../js/vue.js"></script>
 		<script>
