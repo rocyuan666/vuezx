@@ -1,0 +1,177 @@
+1.创建项目
+2.划分目录结构
+3.引入初始化css
+4.目录起别名vue.config.js
+5..gitignore文件（项目规范）创建
+
+没记住的单词：
+redirect 重定向
+children  孩子
+
+
+
+
+
+
+路由学习：
+
+安装vue-router:
+npm install vue-router --save
+
+配置路由映射关系之前需准备（基本使用）：
+1. 安装插件（只要是个vue插件必须调用）：Vue.use(插件)
+2.创建vue-router对象（var router = new VueRouter({ routes })）    routes：[array] 配置映射关系
+3.将router对象传入Vue实例中（exprot default router）
+
+配置路由映射
+1.创建路由组件（创建模板组件.vue文件）
+2.配置映射关系：组件和路由的映射关系
+3.使用路由：通过 <router-link to="路径">和<router-view>
+
+一进页面就显示首页问题解决
+再次创建一条映射关系（重定向）
+{
+path: '',
+redirect: '/home'
+}
+
+哈希值url问题解决
+newVueRouter时候传参数（更改默认的“哈希模式”为“history模式”）：
+mode: history
+
+router-link属性：
+1. tag="button"（默认渲染为a标签）
+2. replace 禁止浏览器返回按钮（默认可以返回）
+3. active-class="active" （更改活跃状态class，默认为“router-link-active”）
+
+更改活跃状态class
+1. active-class="active" （更改活跃状态class，默认为“router-link-active”）太麻烦
+2. newVueRouter时候传参数；linkActiveClass: "active"
+
+不用<router-link>，使用代码跳转
+监听方法 执行： 
+this.$router.push('/home')      可以点击浏览器的返回按钮
+this.$router.replact('/home')   不可以点击浏览器的返回按钮
+
+
+动态路由：
+$router与$route区别？
+$router：new出来的VueRouter
+$route：处于活跃的那个路由
+
+this.$route.params.userId   获取用户页面路由后加的用户名
+
+
+
+路由懒加载：
+打包后默认是在一个js文件中的（js文件过大，请求时间过长）
+使用路由懒加载后，用到哪个路由再加载哪个组件
+用法：
+1. 结合Vue的异步组件和webpack的代码
+2. AMD写法
+1和2不推荐  写法太繁琐 都是（resolve）=>{......}
+3. es6写法（推荐）：
+const Home = ()=>import('../components/Home.vue')
+
+
+
+路由嵌套使用：
+导入组件（路由懒加载方式）
+{
+  path: '/home',
+  component: Home,
+  children: [
+    {
+    path: 'news',
+    component: News
+    }
+  ]
+}
+在路由映射配置中加 children: [ ]
+在Home组件中加
+<router-link to='/home/news'>
+<router-view/>
+
+
+
+路由传递参数：
+1. params的类型：动态路由方式（this.$route.params.id）
+2. query的类型：(path: '/profile', query: {xx:xx....})
+所有的组件都继承与Vue的原型（Vue.prototype）
+
+
+
+
+导航守卫：
+1. 这种方法不好：
+created(){
+document.title = '首页'
+}
+
+2. 导航守卫方法（beforeEachacti）
+{
+  path: '/home',
+  component: Home,
+  路由独享守卫
+  beforeEnter: function(to, from, next){
+    next()
+  }
+  meta: {
+    title: '首页'
+  }
+}
+前置钩子（回调）******全局守卫******
+router.beforeEach(function(to, from, next){
+  //路由嵌套出现错误
+  document.title = to.meta.title
+  //正确的
+  document.title = to.matched[0].meta.title
+  next()
+})
+
+meta： 元数据：描述数据的数据
+beforeEach ：前置守卫：跳转之前执行
+afterEach：后置钩子：跳转完成后执行（function（to, from））,没有next，因为跳转完成了
+
+
+
+keep-alive：
+包裹的动态组件会被缓存，当离开某个组件，不要让组件频繁创建销毁
+首页点击消息，再次点回首页会跳转新闻问题！
+
+1. 生命周期函数：
+created(){}   当组件被创建，执行回调
+destroyed(){}  当组件被销毁后，执行回调
+mounted(){}  当组件模板被挂载到Dom上时，执行回调
+update(){}  当页面发生变化时，执行回调
+
+2. 没有keep-alice,以下两方法不会生效
+activated：是在被包裹组建被激活的状态下使用的生命周期钩子
+deactivated：在被包裹组件停止使用时调用
+
+3. 在home中 path变量保存记录路径
+beforeRouteLeave(to, from, next){   （组件内导航守卫）当组件离开前，回调
+  this.path = this.$route.path(当前活跃的路由地址)
+  next()
+}
+
+keep-alive属性
+include: 字符串或正则，只有匹配的会被缓存
+exclude: 字符串或正则，匹配的不会被缓存
+<keep-alive exclude='Profile(VueName1),User(VueName2)'></keep-alive>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

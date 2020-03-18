@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // setTimeout(() => {
+    //   console.log('请求成功了')
+    // }, 1000)
+
+    
+    // promise基本使用
+    // resolve：解决
+    // reject：拒绝
+    new Promise(function(resolve,reject){
+      // 模拟网络请求
+      setTimeout(() => {
+        // resolve('请求成功了')
+        reject('请求失败了')
+      }, 1000)
+    }).then(function(data){
+      console.log(data)
+    }).catch(function(err){
+      console.log(err)
+    })
+  </script>
+</body>
+</html>

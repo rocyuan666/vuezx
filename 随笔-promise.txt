@@ -1,0 +1,84 @@
+promise(ES6特性)
+promise是一个类
+作用：对异步操作进行封装
+请求代码和处理代码分开了！
+异步编程的解决方案（promise和异步操作有关系）
+
+网络请求（是异步），开启异步任务
+如果是（同步）会出现阻塞（界面空白），必须请求完才执行
+
+网络请求复杂时，会出现“回调地狱”
+
+
+1.基本语法:
+resolve: 解决 | reject: 拒绝（都是函数）
+new Promise(function(resolve, reject){
+  异步操作
+  setTimeout(function(){
+    resolve('请求成功了');
+    reject('请求失败了')
+  },1000)
+}).then(function(data){
+  成功了！
+  console.log(data)
+}).catch(function(err){
+  console.log(err)
+})
+
+2.promise三种状态：
+pending: 等待状态
+fulfill: 满足状态（请求成功了，我们主动回调resolve()，会回调.then()）
+reject: 拒绝状态（请求失败了,我们主动回调reject()，会回调.catch()）
+
+3. promise链式调用：
+
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('成功')
+  }, 1000)
+}).then((data) => {
+  console.log(data)
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('成功')
+    },1000)
+  })
+}).then((data) => {
+  console.log(data)
+})
+
+
+4. promise  all方法使用
+用途：等待 请求1和请求2 都完成再做操作
+
+Promise.all([
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('成功1')
+    },1000)
+  }),
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('成功1')
+    },1000)
+  }),
+]).then(res => {
+  console.log(res[0])
+  console.log(res[1])
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
