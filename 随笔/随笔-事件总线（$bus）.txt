@@ -1,0 +1,15 @@
+事件总线（非父子组件传递）:
+
+默认$bus没有值
+在main.js
+Vue.prototype.$bus = new Vue()
+
+子...组件,发射事件
+this.$bus.$emit('imgLoad')
+
+父...组件 接受事件
+this.$bus.$on('imgLoad',function(){
+
+})
+
+

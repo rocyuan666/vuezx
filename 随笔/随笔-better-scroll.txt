@@ -53,3 +53,14 @@ bscroll.on('pullingUp',function(){
 //返回顶部
 bscroll.scrollTo(0, 0, 500)
 
+******************************************采坑***************************************
+better-scroll可滚动区域的BUG
+图片是异步加载的导致wrapper中content的高度不对
+监听每一张图片加载完成后执行
+scroll.refresh()：重新计算高度
+
+js监听图片加载完成：
+img.onload = function(){}
+
+Vue中图片加载完成：
+<img @load='imgload' />
